@@ -39,12 +39,13 @@ public class AdressController implements CRUDEntity {
 	}
 
 
-	public void delete(Object o) {
+	public void findById(Object o) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void findById(Object o) {
+
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
 	}
