@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.models.*;
+import com.models.entities.*;
 public class Main {
 
 	private static SessionFactory factory;
