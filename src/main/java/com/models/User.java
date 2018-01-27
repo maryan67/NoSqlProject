@@ -2,29 +2,29 @@ package com.models;
 
 public class User {
 
-	private int ID;
+	private int id;
 	private String userName;
 	private String passWord;
-	private String eMail;
 	private boolean hasPendingRequest;
+	private int detailsId;
 
 	public User() {
 	}
 
-	public User(int iD, String userName, String passWord, String eMail, boolean hasPendingRequest) {
-		ID = iD;
+	public User(int iD, String userName, String passWord, boolean hasPendingRequest, int detailsId) {
+		id = iD;
 		this.userName = userName;
 		this.passWord = passWord;
-		this.eMail = eMail;
 		this.hasPendingRequest = hasPendingRequest;
+		this.detailsId = detailsId;
 	}
 
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	public void setID(int iD) {
-		ID = iD;
+		id = iD;
 	}
 
 	public String getUserName() {
@@ -43,20 +43,20 @@ public class User {
 		this.passWord = passWord;
 	}
 
-	public String geteMail() {
-		return eMail;
-	}
-
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
-
 	public boolean isHasPendingRequest() {
 		return hasPendingRequest;
 	}
 
 	public void setHasPendingRequest(boolean hasPendingRequest) {
 		this.hasPendingRequest = hasPendingRequest;
+	}
+
+	public int getDetailsId() {
+		return detailsId;
+	}
+
+	public void setDetailsId(int detailsId) {
+		this.detailsId = detailsId;
 	}
 
 }
