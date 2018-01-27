@@ -1,11 +1,21 @@
 package com.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+	@Id @GeneratedValue
 	private int id;
+
+	@Column(name = "user_name")
 	private String userName;
+	@Column(name = "password")
 	private String passWord;
+	@Column(name = "has_pending_request")
 	private boolean hasPendingRequest;
+	@Column(name = "details_id")
 	private int detailsId;
 
 	public User() {

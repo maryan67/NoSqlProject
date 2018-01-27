@@ -1,11 +1,24 @@
 package com.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "adresses")
 public class Adress {
 	
+	@Id @GeneratedValue
 	private int id;
+	@Column(name = "street")
 	private String street;
+	@Column(name = "street_number")
 	private int streetNumber;
+	@Column(name = "block_number")
 	private int blockNumber;
+	@Column(name = "zip_ode")
 	private String zipCode;
 	
 	public Adress () {}

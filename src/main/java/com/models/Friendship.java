@@ -1,10 +1,22 @@
 package com.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "friendships")
 public class Friendship {
 
+	@Id @GeneratedValue
 	private int id;
+	@Column(name="is_confirmed")
 	private boolean isConfirmed;
+	@Column(name="idLeft")
 	private int idLeft;
+	@Column(name="idRight")
 	private int idRight;
 
 	public Friendship() {

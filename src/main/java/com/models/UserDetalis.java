@@ -1,10 +1,23 @@
 package com.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users_details")
 public class UserDetalis {
 	
+	
+	@Id @GeneratedValue
 	private int id;
+	@Column(name = "e_mail")
 	private String eMail;
+	@Column(name = "adress_id")
 	private String adressId;
+	@Column(name = "bio")
 	private String bio;
 	
 	public UserDetalis() {}
