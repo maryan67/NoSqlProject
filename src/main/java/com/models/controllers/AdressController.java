@@ -1,29 +1,50 @@
 package com.models.controllers;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.models.CRUDEntity;
+import com.models.entities.User;
 
 public class AdressController implements CRUDEntity {
 
-	
 	private Session session;
-	public void update() {
+
+	public AdressController(Session session) {
+		super();
+		this.session = session;
+	}
+
+
+	public void update(Object o) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void create() {
+	public void create(Object o) {
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			session.save(o);
+			session.getTransaction().commit();
+		} catch (RuntimeException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.close();
+		}
+	}
+
+
+	public void delete(Object o) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void findById() {
+	public void findById(Object o) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -21,8 +21,7 @@ public class User {
 	public User() {
 	}
 
-	public User(int iD, String userName, String passWord, boolean hasPendingRequest, int detailsId) {
-		id = iD;
+	public User(String userName, String passWord, boolean hasPendingRequest, int detailsId) {
 		this.userName = userName;
 		this.passWord = passWord;
 		this.hasPendingRequest = hasPendingRequest;
