@@ -26,6 +26,7 @@ public class MainControler {
 		Stage stage=(Stage) node.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));/* Exception */
 		Scene scene = new Scene(root);
+		stage.setTitle("Registration");
 		stage.setScene(scene);
 		stage.show();
 
