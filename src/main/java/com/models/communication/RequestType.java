@@ -1,0 +1,12 @@
+package com.models.communication;
+
+public enum RequestType {
+	
+	REQUEST_LOGIN,
+	REQUEST_REGISTER,
+	REQUEST_SENDMESSAGE,
+	REQUEST_ADDFRIEND,
+	REQUEST_CONFIRMFRIEND,
+	REQUEST_VIEWUSER,
+
+}

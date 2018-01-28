@@ -16,15 +16,7 @@ public class Main {
 	
 	
 	public static void main (String args[]) {
-		AsynchronousServerSocketChannel server;
 		
-		try {
-			SessionFactory factory = new Configuration().configure().addAnnotatedClass(User.class)
-					.addAnnotatedClass(Adress.class).addAnnotatedClass(Friendship.class)
-					.addAnnotatedClass(UserDetalis.class).buildSessionFactory();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 	}
 

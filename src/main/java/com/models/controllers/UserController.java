@@ -74,5 +74,9 @@ public class UserController implements CRUDEntity {
 			session.close();
 		}		
 	}
+	
+	public boolean checkLogin(User user) {
+		return true;
+	}
 
 }
