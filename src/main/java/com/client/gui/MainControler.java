@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,6 +18,12 @@ import javafx.stage.Stage;
 
 public class MainControler {
 
+	@FXML
+	private Button btnChat;
+	
+	@FXML
+	private Button btnEdit;
+	
 	@FXML
 	private TextField txtUsername;
 	
@@ -37,6 +44,14 @@ public class MainControler {
 
 	}
 	
+	public void onEditClick(ActionEvent event) throws IOException {
+		LoginFunctions.goToEdit(event);
+	}
+	
+	public void onChatClick(ActionEvent event) throws IOException {
+		LoginFunctions.goToChat(event);
+	}
+	
 	@FXML
 	public void login (ActionEvent event) throws IOException {
 		System.out.println("Click event");
@@ -45,10 +60,13 @@ public class MainControler {
 			user = LoginFunctions.createUser(txtUsername.getText(), txtPassword.getText());
 			System.out.println("User object created");
 			System.out.println(user);
-			LoginFunctions.goToChat(event);
+			btnChat.setDisable(false);
+			btnEdit.setDisable(false);
 		}
 		
 	}
+	
+	
 	
 	@FXML 
 	public void warnings() {

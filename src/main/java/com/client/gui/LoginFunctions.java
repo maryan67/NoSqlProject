@@ -49,4 +49,14 @@ public class LoginFunctions {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public static void goToEdit (ActionEvent event) throws IOException {
+		Node node=(Node) event.getSource();
+		Stage stage=(Stage) node.getScene().getWindow();
+		Parent root = FXMLLoader.load(LoginFunctions.class.getResource("/fxml/EditProfile.fxml"));
+		Scene scene = new Scene(root);
+		stage.setTitle("Edit Profile");
+		stage.setScene(scene);
+		stage.show();
+	}
 }
