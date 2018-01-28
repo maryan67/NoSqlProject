@@ -1,5 +1,8 @@
 package com.client.gui;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +26,11 @@ public class ChatScreenController {
 	public void onSendClick() {
 		lblTextArea.setText(lblTextArea.getText() + txtInput.getText() + "\n");
 		txtInput.clear();
+	}
+	
+	@FXML
+	public void onBackClick(ActionEvent event) throws IOException {
+		ChatScreenFunctions.backToLogin(event);
 	}
 	
 		
