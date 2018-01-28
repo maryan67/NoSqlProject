@@ -12,6 +12,8 @@ import com.models.communication.RequestType;
 import com.models.communication.Response;
 import com.models.entities.User;
 
+import javafx.scene.control.Label;
+
 public class ClientHandler {
 
      
@@ -114,8 +116,7 @@ public class ClientHandler {
 	       
 	    
 }
-	public void startListeningToMessages() { // TODO aici sa bagi exact ce se updateaza din interfata gen cu mesaju nou ca si parametru
-	
+	public void startListeningToMessages(final Label lblTextArea) {
 		  Thread readMessage = new Thread(new Runnable() 
 	        {
 	            @Override
@@ -125,8 +126,7 @@ public class ClientHandler {
 	                while (true) {
 	                    try {
 	                    	response = (Response) dis.readObject();
-	                    	
-	                    	//TODO la fel iei din response from(User) si message si le bagi in ui unde crezi tu
+	                    	lblTextArea.setText(lblTextArea.getText()+response.getFrom().getUserName()+":"+response.getMessage()+"\n");
 	                        
 	                    } catch (IOException e) {
 	 

@@ -96,8 +96,9 @@ public void run() {
 		Response response = null;
 		while(1 == 1) {
 			request = (Request) oIn.readObject();
-			System.out.println("da");
+			
 			response = request.createResponse(factory.openSession());
+			
 			if(response.getResponseType() == ResponseType.RESPONSE_LOGIN_OK) {
 				if(response.isSuccess())
 					this.loggedUser = request.getTo();
