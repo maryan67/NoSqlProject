@@ -21,7 +21,7 @@ import com.models.entities.UserDetalis;
 
 public class Server extends Thread {
 
-	static HashSet<ServerHandler> clients;
+	static HashSet<ServerHandler> clients = new HashSet<ServerHandler>();
 	public void run() {
 
 		SessionFactory factory = new Configuration().configure().addAnnotatedClass(User.class)
@@ -32,8 +32,10 @@ public class Server extends Thread {
 			ServerSocket server = new ServerSocket(6666);
 			while (!server.isClosed()) {
 				Socket connection = server.accept();
-				ObjectInputStream oIn = new ObjectInputStream(connection.getInputStream());
+				System.out.println("Client connected");
 				ObjectOutputStream oOut = new ObjectOutputStream(connection.getOutputStream());
+				ObjectInputStream oIn = new ObjectInputStream(connection.getInputStream());
+				System.out.println("ajung aci");
 				ServerHandler start = new ServerHandler(connection,factory,oIn,oOut);
 				clients.add(start);
 				start.start();
@@ -73,17 +75,18 @@ public ObjectOutputStream getoOut() {
 
 
 
-
+@Override
 public void run() {
 	
 	try {
 		
-		
+		System.out.println("Client handler started");
 		Request request;
 		Response response = null;
 		while(1 == 1) {
 			request = (Request) oIn.readObject();
-			response = request.createResponse();
+			System.out.println("da");
+			response = request.createResponse(factory.openSession());
 			if(request.isMessage())
 			{
 				for(ServerHandler client : Server.clients) {

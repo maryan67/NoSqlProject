@@ -1,13 +1,26 @@
 package com.models.communication;
 
+import java.io.Serializable;
+
+import org.hibernate.Session;
+
 import com.models.CRUDEntity;
 import com.models.controllers.ControllerFactory;
 import com.models.controllers.UserController;
 import com.models.entities.User;
 
-public class Request {
+public class Request implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
 
 	private RequestType requestType;
+	
 
 	
 
@@ -42,11 +55,11 @@ public class Request {
 		this.requestType = requestType;
 	}
 
-	public Response createResponse() {
+	public Response createResponse(Session session) {
 
 		ControllerFactory controllerFactory = new ControllerFactory();
 
-		CRUDEntity controller = controllerFactory.getController("User", null);
+		CRUDEntity controller = controllerFactory.getController("User",session );
 		Response response = null;
 		switch (requestType) {
 		case REQUEST_ADDFRIEND:
@@ -63,7 +76,9 @@ public class Request {
 		}
 		case REQUEST_REGISTER: {
 
+			System.out.println("da");
 			((UserController) controller).create(from);
+			
 			response = new Response(ResponseType.RESPONSE_REGISTER_OK);
 			response.setSuccess(true);
 			break;
