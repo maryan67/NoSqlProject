@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 public class FxmlFunctions {
 
 	
+	private FxmlFunctions() {}
+	
+	private static FxmlFunctions singletonInstance = null;
+	
 	//Screen switching
 	public void backToLogin (ActionEvent event) throws IOException {
 		Node node=(Node) event.getSource();
@@ -104,5 +108,12 @@ public class FxmlFunctions {
 			System.out.println("Register succesful");
 		else 
 			System.out.println("Register failed");
+	}
+	public static FxmlFunctions getSingletonInstance() {
+		if(singletonInstance == null) {
+			singletonInstance= new FxmlFunctions();
+		}
+		
+		return singletonInstance;
 	}
 }
