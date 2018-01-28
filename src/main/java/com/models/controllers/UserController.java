@@ -92,7 +92,8 @@ public class UserController implements CRUDEntity {
         }
        
     
-		
+		if(toCheck == null)
+			return false;
 		
 		return toCheck.getPassWord().equals(user.getPassWord());
 	}

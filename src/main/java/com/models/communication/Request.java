@@ -76,7 +76,7 @@ public class Request implements Serializable {
 		}
 		case REQUEST_REGISTER: {
 
-			System.out.println("da");
+			
 			((UserController) controller).create(from);
 			
 			response = new Response(ResponseType.RESPONSE_REGISTER_OK);
