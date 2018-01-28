@@ -20,5 +20,7 @@
       </Label>
       <Label fx:id="lblUserWarning" layoutX="77.0" layoutY="124.0" textFill="RED" visible="false" />
       <Label fx:id="lblPassWarning" layoutX="77.0" layoutY="175.0" textFill="RED" />
+      <Button fx:id="btnEdit" disable="true" layoutX="113.0" layoutY="261.0" mnemonicParsing="false" onAction="#onEditClick" prefWidth="75.0" text="Edit Profile" />
+      <Button fx:id="btnChat" disable="true" layoutX="113.0" layoutY="231.0" mnemonicParsing="false" onAction="#onChatClick" prefWidth="75.0" text="Chat" />
    </children>
 </AnchorPane>

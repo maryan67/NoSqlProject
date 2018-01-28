@@ -25,6 +25,9 @@ public class MainControler {
 	private Button btnEdit;
 	
 	@FXML
+	private Button btnLogin;
+	
+	@FXML
 	private TextField txtUsername;
 	
 	@FXML
@@ -58,10 +61,14 @@ public class MainControler {
 		warnings();
 		if (LoginFunctions.checkData(txtUsername.getText(), txtPassword.getText())) {
 			user = LoginFunctions.createUser(txtUsername.getText(), txtPassword.getText());
-			System.out.println("User object created");
-			System.out.println(user);
-			btnChat.setDisable(false);
-			btnEdit.setDisable(false);
+			if (LoginFunctions.checkLogin(user)) {
+				System.out.println("User object created");
+				System.out.println(user);
+				btnChat.setDisable(false);
+				btnEdit.setDisable(false);
+				btnLogin.setDisable(true);
+				
+			}
 		}
 		
 	}

@@ -2,6 +2,7 @@ package com.client.gui;
 
 import java.io.IOException;
 
+import com.client.ClientHandler;
 import com.models.entities.User;
 
 import javafx.event.ActionEvent;
@@ -28,6 +29,12 @@ public class LoginFunctions {
 		user.setUserName(username);
 		user.setPassWord(pass);
 		return user;
+	}
+	
+	public static Boolean checkLogin (User user) {
+		ClientHandler clientHandler = new ClientHandler (user);
+		clientHandler.connect();
+		return clientHandler.login();
 	}
 	
 	public static void goToChat (ActionEvent event) throws IOException {

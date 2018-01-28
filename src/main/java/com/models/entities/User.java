@@ -35,6 +35,16 @@ public class User  implements Serializable{
 		this.detailsId = detailsId;
 	}
 
+	
+	public Boolean equals (User user) {
+		if (userName.equals(user.getUserName()))
+			return true;
+		else
+			return false;		
+	}
+	
+	
+	
 	public int getID() {
 		return id;
 	}
