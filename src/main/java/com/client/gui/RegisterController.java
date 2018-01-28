@@ -66,7 +66,7 @@ public class RegisterController {
 		warnings();
 		
 		if (RegisterFunctions.checkData(txtUsername.getText(), txtPass1.getText(), txtPass2.getText())) {
-			System.out.println("Succesful");
+			System.out.println("Registration Succesful");
 			userOk = true;
 		}
 		else {
