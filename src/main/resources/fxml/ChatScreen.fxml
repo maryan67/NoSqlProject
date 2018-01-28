@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.gui.ChatScreenController">
    <children>
       <SplitPane dividerPositions="0.65" layoutX="250.0" layoutY="135.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,10 +20,11 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView layoutX="21.0" layoutY="14.0" prefHeight="412.0" prefWidth="200.0" />
+                  <ListView layoutX="21.0" layoutY="14.0" prefHeight="388.0" prefWidth="200.0" />
                   <Button fx:id="btnBack" layoutX="21.0" layoutY="448.0" mnemonicParsing="false" onAction="#onBackClick" prefWidth="60.0" text="Back" />
                   <Button layoutX="161.0" layoutY="448.0" mnemonicParsing="false" prefWidth="60.0" text="Chat" />
                   <Button layoutX="91.0" layoutY="448.0" mnemonicParsing="false" prefWidth="60.0" text="View" />
+                  <Button fx:id="btnRefresh" layoutX="91.0" layoutY="411.0" mnemonicParsing="false" prefWidth="60.0" text="Refresh" />
                </children>
             </AnchorPane>
         </items>

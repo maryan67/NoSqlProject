@@ -2,6 +2,9 @@ package com.client.gui;
 
 import java.io.IOException;
 
+import com.client.ClientHandler;
+import com.models.entities.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,10 +19,15 @@ public class ChatScreenController {
 	private Button btnSend;
 	
 	@FXML
+	private Button btnRefresh;
+	
+	@FXML
 	private Label lblTextArea;
 	
 	@FXML
 	private TextField txtInput;
+	
+	private User user;
 	
 	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
 	
@@ -33,6 +41,14 @@ public class ChatScreenController {
 	public void onBackClick(ActionEvent event) throws IOException {
 		functions.backToLogin(event);
 	}
+	
+	public void listen () {
+		ClientHandler clientHandler = new ClientHandler (user);
+		clientHandler.connect();
+		
+	}
+	
+	
 	
 		
 }
