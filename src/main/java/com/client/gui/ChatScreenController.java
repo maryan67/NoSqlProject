@@ -21,6 +21,7 @@ public class ChatScreenController {
 	@FXML
 	private TextField txtInput;
 	
+	private FxmlFunctions functions= new FxmlFunctions();
 	
 	@FXML
 	public void onSendClick() {
@@ -30,7 +31,7 @@ public class ChatScreenController {
 	
 	@FXML
 	public void onBackClick(ActionEvent event) throws IOException {
-		ChatScreenFunctions.backToLogin(event);
+		functions.backToLogin(event);
 	}
 	
 		

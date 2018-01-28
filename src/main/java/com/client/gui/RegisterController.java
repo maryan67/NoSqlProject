@@ -48,9 +48,11 @@ public class RegisterController {
 	@FXML
 	private Label lblEmailWarning;
 	
+	private FxmlFunctions functions= new FxmlFunctions();
+	
 	@FXML
 	public void goBackToLogin (ActionEvent event) throws IOException {
-		RegisterFunctions.backToLogin(event);
+		functions.backToLogin(event);
 	}
 	
 	@FXML 
@@ -59,7 +61,7 @@ public class RegisterController {
 		boolean userOk = false;
 		warnings();
 		
-		if (RegisterFunctions.checkData(txtUsername.getText(), txtPass1.getText(), txtPass2.getText())) {
+		if (functions.checkRegisterData(txtUsername.getText(), txtPass1.getText(), txtPass2.getText())) {
 			userOk = true;
 		}
 		else {
@@ -68,8 +70,8 @@ public class RegisterController {
 		}
 		
 		if (userOk) {
-			user = RegisterFunctions.createUser(txtUsername.getText(), txtPass1.getText());
-			RegisterFunctions.registerUser(user);
+			user = functions.createUser(txtUsername.getText(), txtPass1.getText());
+			functions.registerUser(user);
 			btnRegister.setDisable(true);
 		}
 		

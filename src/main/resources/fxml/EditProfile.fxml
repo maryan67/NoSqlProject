@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="com.client.gui.EditProfileController">
+<AnchorPane prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.gui.EditProfileController">
    <children>
-      <Label layoutX="65.0" layoutY="51.0" text="Edit Information">
+      <Label fx:id="lblWelcome" layoutX="65.0" layoutY="51.0" text="Edit Information">
          <font>
             <Font size="24.0" />
          </font>

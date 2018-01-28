@@ -41,19 +41,8 @@ public class MainControler {
 	
 	private User user;
 	
-	@FXML
-	public void goToRegister (ActionEvent event) throws IOException {
-		LoginFunctions.goToRegister(event);
-
-	}
+	public User loggedUser;
 	
-	public void onEditClick(ActionEvent event) throws IOException {
-		LoginFunctions.goToEdit(event);
-	}
-	
-	public void onChatClick(ActionEvent event) throws IOException {
-		LoginFunctions.goToChat(event);
-	}
 	
 	@FXML
 	public void login (ActionEvent event) throws IOException {
@@ -66,13 +55,28 @@ public class MainControler {
 				System.out.println(user);
 				btnChat.setDisable(false);
 				btnEdit.setDisable(false);
-				btnLogin.setDisable(true);
+				btnLogin.setDisable(true);				
+				loggedUser = user;
 				
 			}
 		}
 		
 	}
 	
+	@FXML
+	public void goToRegister (ActionEvent event) throws IOException {
+		LoginFunctions.goToRegister(event);
+
+	}
+	
+	@FXML
+	public void onEditClick(ActionEvent event) throws IOException {
+		LoginFunctions.goToEdit(event);
+	}
+	@FXML
+	public void onChatClick(ActionEvent event) throws IOException {
+		LoginFunctions.goToChat(event);
+	}
 	
 	
 	@FXML 

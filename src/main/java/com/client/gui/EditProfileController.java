@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class EditProfileController {
 
@@ -14,7 +15,12 @@ public class EditProfileController {
 	@FXML
 	private Button btnCancel;
 	
+	@FXML
+	private Label lblWelcome;
+	
+	private FxmlFunctions functions;
+	
 	public void onCancelClick(ActionEvent event) throws IOException {
-		EditProfileFunctions.backToLogin(event);
+		functions.backToLogin(event);
 	}
 }
