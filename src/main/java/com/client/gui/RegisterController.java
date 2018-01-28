@@ -50,13 +50,7 @@ public class RegisterController {
 	
 	@FXML
 	public void goBackToLogin (ActionEvent event) throws IOException {
-		Node node=(Node) event.getSource();
-		Stage stage=(Stage) node.getScene().getWindow();
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));/* Exception */
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-
+		RegisterFunctions.backToLogin(event);
 	}
 	
 	@FXML 
