@@ -9,8 +9,25 @@ public class Request {
 
 	private RequestType requestType;
 
+	
+
 	private User from;
 	private User to;
+	private String message;
+	public User getFrom() {
+		return from;
+	}
+	
+	
+	public void setFrom(User from) {
+		this.from = from;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
 	public User getTo() {
 		return to;
 	}
@@ -21,7 +38,7 @@ public class Request {
 	}
 
 
-	Request(RequestType requestType) {
+	public Request(RequestType requestType) {
 		this.requestType = requestType;
 	}
 
@@ -37,16 +54,23 @@ public class Request {
 		case REQUEST_CONFIRMFRIEND:
 			break;
 		case REQUEST_LOGIN: {
-			((UserController) controller).checkLogin(from);
+			response = new Response(ResponseType.RESPONSE_LOGIN_OK);
+			if(((UserController) controller).checkLogin(from)) {
+				response.setSuccess(true);
+			}
 
 			break;
 		}
 		case REQUEST_REGISTER: {
 
 			((UserController) controller).create(from);
+			response = new Response(ResponseType.RESPONSE_REGISTER_OK);
+			response.setSuccess(true);
 			break;
 		}
 		case REQUEST_SENDMESSAGE:
+			response = new Response(ResponseType.RESPONSE_MESSAGE_DELIVERED);
+			response.setMessage(message);
 			break;
 		case REQUEST_VIEWUSER: {
 			((UserController) controller).findById(from);

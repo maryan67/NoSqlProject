@@ -68,15 +68,6 @@ public ServerHandler(Socket socket, SessionFactory factory, ObjectInputStream oI
 }
 
 
-
-
-public ObjectInputStream getoIn() {
-	return oIn;
-}
-
-
-
-
 public ObjectOutputStream getoOut() {
 	return oOut;
 }
@@ -100,7 +91,8 @@ public void run() {
 					
 					if(client.equals(request.getTo())) {
 					client.getoOut().writeObject(response);
-					break;}
+					break;
+					}
 				}
 				continue;
 			}
