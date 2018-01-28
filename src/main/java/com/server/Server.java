@@ -1,4 +1,4 @@
-apackage com.server;
+package com.server;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,7 +17,6 @@ import com.models.entities.Adress;
 import com.models.entities.Friendship;
 import com.models.entities.User;
 import com.models.entities.UserDetalis;
-import com.models.communication.*;
 
 
 public class Server extends Thread {
