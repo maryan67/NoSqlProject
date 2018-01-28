@@ -11,6 +11,7 @@ public class Response implements Serializable{
 	private ResponseType responseType;
 	private boolean success;
 	private String message;
+	private User from;
 	public Response(ResponseType responseType) {
 		this.responseType = responseType;
 		success= false;

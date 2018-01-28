@@ -86,6 +86,7 @@ public class Request implements Serializable {
 		case REQUEST_SENDMESSAGE:
 			response = new Response(ResponseType.RESPONSE_MESSAGE_DELIVERED);
 			response.setMessage(message);
+			response.setFrom(from);
 			break;
 		case REQUEST_VIEWUSER: {
 			((UserController) controller).findById(from);

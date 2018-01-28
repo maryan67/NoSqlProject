@@ -13,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.models.communication.Request;
 import com.models.communication.Response;
+import com.models.communication.ResponseType;
 import com.models.entities.Adress;
 import com.models.entities.Friendship;
 import com.models.entities.User;
@@ -69,6 +70,16 @@ public ServerHandler(Socket socket, SessionFactory factory, ObjectInputStream oI
 }
 
 
+public User getLoggedUser() {
+	return loggedUser;
+}
+
+
+public void setLoggedUser(User loggedUser) {
+	this.loggedUser = loggedUser;
+}
+
+
 public ObjectOutputStream getoOut() {
 	return oOut;
 }
@@ -87,11 +98,15 @@ public void run() {
 			request = (Request) oIn.readObject();
 			System.out.println("da");
 			response = request.createResponse(factory.openSession());
+			if(response.getResponseType() == ResponseType.RESPONSE_LOGIN_OK) {
+				if(response.isSuccess())
+					this.loggedUser = request.getTo();
+			}
 			if(request.isMessage())
 			{
 				for(ServerHandler client : Server.clients) {
 					
-					if(client.equals(request.getTo())) {
+					if(client.getLoggedUser().equals(request.getTo())) {
 					client.getoOut().writeObject(response);
 					break;
 					}

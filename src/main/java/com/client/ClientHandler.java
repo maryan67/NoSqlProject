@@ -87,6 +87,59 @@ public class ClientHandler {
 	}
 	
 	
+	public void sendMessage(final String message, final User recipient) {
+
+		 Thread sendMessage = new Thread(new Runnable() 
+	        {
+	            @Override
+	            public void run() {
+	               
+	 
+	                     
+	                    try {
+	                    	Request request = new Request(RequestType.REQUEST_SENDMESSAGE);
+	                		request.setFrom(user);
+	                		request.setTo(recipient);
+	                		request.setMessage(message);
+	                		dos.writeObject(request);
+	                		
+	                  
+	                    } catch (IOException e) {
+	                        e.printStackTrace();
+	                    }
+	                
+	            }
+	        });
+		 sendMessage.start();
+	       
+	    
+}
+	public void startListeningToMessages() { // TODO aici sa bagi exact ce se updateaza din interfata gen cu mesaju nou ca si parametru
+	
+		  Thread readMessage = new Thread(new Runnable() 
+	        {
+	            @Override
+	            public void run() {
+	 
+	            	Response response = null;
+	                while (true) {
+	                    try {
+	                    	response = (Response) dis.readObject();
+	                    	
+	                    	//TODO la fel iei din response from(User) si message si le bagi in ui unde crezi tu
+	                        
+	                    } catch (IOException e) {
+	 
+	                        e.printStackTrace();
+	                    } catch (ClassNotFoundException e) {
+							e.printStackTrace();
+						}
+	                }
+	            }
+	        });
+	readMessage.start();
+	}
+	
 	
 	
 	
