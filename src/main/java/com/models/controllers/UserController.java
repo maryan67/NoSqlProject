@@ -10,13 +10,26 @@ public class UserController implements CRUDEntity {
 
 	private Session session;
 
-	public UserController(Session session) {
+	protected UserController(Session session) {
 		this.session = session;
 	}
 
 	public void update(Object o) {
 
-		
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			session.update(o);
+			session.getTransaction().commit();
+		} catch (RuntimeException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.close();
+		}
 
 	}
 
@@ -39,13 +52,27 @@ public class UserController implements CRUDEntity {
 
 
 	public void findById(Object o) {
-		// TODO Auto-generated method stub
+		
+		
 
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			User user = (User) session.load(User.class, new Integer(id));
+			
+			session.delete(user);
+			session.getTransaction().commit();
+		} catch (RuntimeException e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}		
 	}
 
 }
