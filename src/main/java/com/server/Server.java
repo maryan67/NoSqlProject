@@ -97,11 +97,22 @@ public void run() {
 		while(1 == 1) {
 			request = (Request) oIn.readObject();
 			
+			
 			response = request.createResponse(factory.openSession());
+			
 			
 			if(response.getResponseType() == ResponseType.RESPONSE_LOGIN_OK) {
 				if(response.isSuccess())
 					this.loggedUser = request.getTo();
+				for(ServerHandler client : Server.clients) {
+					response.getOnlineUsers().add(client.getLoggedUser());
+				}
+				
+			}
+			if(response.getResponseType() == ResponseType.RESPONSE_REFRESHONLINE) {
+				for(ServerHandler client : Server.clients) {
+					response.getOnlineUsers().add(client.getLoggedUser());
+				}
 			}
 			if(request.isMessage())
 			{
@@ -109,6 +120,7 @@ public void run() {
 					
 					if(client.getLoggedUser().equals(request.getTo())) {
 					client.getoOut().writeObject(response);
+				
 					break;
 					}
 				}

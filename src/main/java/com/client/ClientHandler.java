@@ -1,11 +1,10 @@
 package com.client;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 import com.models.communication.Request;
 import com.models.communication.RequestType;
@@ -86,6 +85,23 @@ public class ClientHandler {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public List<User> refreshOnlineUsers() {
+		Response response = null;
+		Request request = new Request(RequestType.REQUEST_REFRESHONLINE);
+		try {
+			dos.writeObject(request);
+			response = (Response) dis.readObject();
+			return response.getOnlineUsers();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	

@@ -1,6 +1,8 @@
 package com.models.communication;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.models.entities.User;
 
@@ -14,10 +16,17 @@ public class Response implements Serializable{
 	private boolean success;
 	private String message;
 	private User from;
+	private List<User> onlineUsers = new ArrayList<User>();
 	public Response(ResponseType responseType) {
 		this.responseType = responseType;
 		success= false;
 		message = "";
+	}
+	public List<User> getOnlineUsers() {
+		return onlineUsers;
+	}
+	public void setOnlineUsers(List<User> onlineUsers) {
+		this.onlineUsers = onlineUsers;
 	}
 	public boolean isSuccess() {
 		return success;

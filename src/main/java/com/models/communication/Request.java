@@ -93,6 +93,10 @@ public class Request implements Serializable {
 			((UserController) controller).findById(from);
 			break;
 		}
+		case REQUEST_REFRESHONLINE: {
+			response = new Response(ResponseType.RESPONSE_REFRESHONLINE);
+			
+		} 
 		default:
 			break;
 
