@@ -2,6 +2,7 @@ package com.client.gui;
 
 import java.io.IOException;
 
+import com.client.ClientHandler;
 import com.models.entities.User;
 
 import javafx.event.ActionEvent;
@@ -14,6 +15,8 @@ import javafx.stage.Stage;
 
 public class RegisterFunctions {
 
+	
+	
 	public static Boolean checkData (String username, String pass1, String pass2) {
 		Boolean ok = true;
 		
@@ -36,6 +39,15 @@ public class RegisterFunctions {
 		user.setUserName(username);
 		user.setPassWord(pass);
 		return user;
+	}
+	
+	public static void registerUser (User user) {
+		ClientHandler clientHandler = new ClientHandler (user);
+		clientHandler.connect();
+		if (clientHandler.register())
+			System.out.println("Register succesful");
+		else 
+			System.out.println("Register failed");
 	}
 	
 	public static void backToLogin (ActionEvent event) throws IOException {

@@ -60,7 +60,6 @@ public class RegisterController {
 		warnings();
 		
 		if (RegisterFunctions.checkData(txtUsername.getText(), txtPass1.getText(), txtPass2.getText())) {
-			System.out.println("Registration Succesful");
 			userOk = true;
 		}
 		else {
@@ -70,6 +69,7 @@ public class RegisterController {
 		
 		if (userOk) {
 			user = RegisterFunctions.createUser(txtUsername.getText(), txtPass1.getText());
+			RegisterFunctions.registerUser(user);
 			btnRegister.setDisable(true);
 		}
 		
