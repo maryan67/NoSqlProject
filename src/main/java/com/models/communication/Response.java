@@ -2,6 +2,8 @@ package com.models.communication;
 
 import java.io.Serializable;
 
+import com.models.entities.User;
+
 public class Response implements Serializable{
 
 	/**
@@ -32,8 +34,16 @@ public class Response implements Serializable{
 	public ResponseType getResponseType() {
 		return responseType;
 	}
+	public User getFrom() {
+		return from;
+	}
+	public void setFrom(User from) {
+		this.from = from;
+	}
 	
 	
+	    // NA MA
+	//cepl
 	
 	
 }
