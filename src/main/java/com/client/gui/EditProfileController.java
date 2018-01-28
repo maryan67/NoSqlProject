@@ -18,7 +18,7 @@ public class EditProfileController {
 	@FXML
 	private Label lblWelcome;
 	
-	private FxmlFunctions functions;
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
 	
 	public void onCancelClick(ActionEvent event) throws IOException {
 		functions.backToLogin(event);

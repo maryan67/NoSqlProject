@@ -1,6 +1,5 @@
 package com.client.gui;
 
-import com.client.gui.RegisterFunctions;
 
 import java.io.IOException;
 
@@ -48,7 +47,7 @@ public class RegisterController {
 	@FXML
 	private Label lblEmailWarning;
 	
-	private FxmlFunctions functions= new FxmlFunctions();
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
 	
 	@FXML
 	public void goBackToLogin (ActionEvent event) throws IOException {

@@ -21,7 +21,7 @@ public class ChatScreenController {
 	@FXML
 	private TextField txtInput;
 	
-	private FxmlFunctions functions= new FxmlFunctions();
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
 	
 	@FXML
 	public void onSendClick() {

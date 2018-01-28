@@ -43,14 +43,16 @@ public class MainControler {
 	
 	public User loggedUser;
 	
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
+	
 	
 	@FXML
 	public void login (ActionEvent event) throws IOException {
 		System.out.println("Click event");
 		warnings();
-		if (LoginFunctions.checkData(txtUsername.getText(), txtPassword.getText())) {
-			user = LoginFunctions.createUser(txtUsername.getText(), txtPassword.getText());
-			if (LoginFunctions.checkLogin(user)) {
+		if (functions.checkLoginData(txtUsername.getText(), txtPassword.getText())) {
+			user = functions.createUser(txtUsername.getText(), txtPassword.getText());
+			if (functions.checkLogin(user)) {
 				System.out.println("User object created");
 				System.out.println(user);
 				btnChat.setDisable(false);
@@ -65,17 +67,17 @@ public class MainControler {
 	
 	@FXML
 	public void goToRegister (ActionEvent event) throws IOException {
-		LoginFunctions.goToRegister(event);
+		functions.goToRegister(event);
 
 	}
 	
 	@FXML
 	public void onEditClick(ActionEvent event) throws IOException {
-		LoginFunctions.goToEdit(event);
+		functions.goToEdit(event);
 	}
 	@FXML
 	public void onChatClick(ActionEvent event) throws IOException {
-		LoginFunctions.goToChat(event);
+		functions.goToChat(event);
 	}
 	
 	
