@@ -43,7 +43,7 @@ public class MainControler {
 	
 	public User loggedUser;
 	
-	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance(null);
 	
 	
 	@FXML

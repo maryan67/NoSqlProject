@@ -24,9 +24,14 @@ public class FxmlFunctions {
 	
 	private User user;
 	
+	 ChatScreenController chatScreenController;
+	
 	public ClientHandler clientHandler;
 	
 	
+	
+	
+
 	//Screen switching
 	public void backToLogin (ActionEvent event) throws IOException {
 		Node node=(Node) event.getSource();
@@ -40,8 +45,12 @@ public class FxmlFunctions {
 	public void goToChat (ActionEvent event) throws IOException {
 		Node node=(Node) event.getSource();
 		Stage stage=(Stage) node.getScene().getWindow();
-		Parent root = FXMLLoader.load(FxmlFunctions.class.getResource("/fxml/ChatScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ChatScreen.fxml"));
+		Parent root = loader.load();
+		ChatScreenController c = loader.getController();
+		
 		Scene scene = new Scene(root);
+		
 		stage.setTitle("Chat");
 		stage.setScene(scene);
 		stage.show();
@@ -124,7 +133,7 @@ public class FxmlFunctions {
 	}
 	
 	public void listenToMessages (Label lbl) {
-		clientHandler.startListeningToMessages(lbl);
+		clientHandler.startListeningToMessages(chatScreenController);
 	}
 	
 	public void sendMessage (String message, User recipient) {
@@ -133,7 +142,11 @@ public class FxmlFunctions {
 	}
 	
 	//singleton
-	public static FxmlFunctions getSingletonInstance() {
+	public static FxmlFunctions getSingletonInstance(ChatScreenController chatScreenController) {
+		
+		if(chatScreenController != null) {
+			singletonInstance.chatScreenController = chatScreenController;
+		}
 		if(singletonInstance == null) {
 			singletonInstance= new FxmlFunctions();
 		}

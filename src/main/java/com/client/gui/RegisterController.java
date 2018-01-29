@@ -47,7 +47,7 @@ public class RegisterController {
 	@FXML
 	private Label lblEmailWarning;
 	
-	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
+	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance(null);
 	
 	@FXML
 	public void goBackToLogin (ActionEvent event) throws IOException {
