@@ -32,7 +32,15 @@ public class ChatScreenController {
 
 	@FXML
 	private Label lblChatPartner;
+	
+	@FXML
+	private Label lblOnOff;
 
+	@FXML
+	private Label lblLoggedUser;
+	
+	private Boolean chatIsStarted= false;
+	
 	private User user;
 
 	private User selectedUser;
@@ -41,6 +49,7 @@ public class ChatScreenController {
 
 	public ChatScreenController() {
 		functions = FxmlFunctions.getSingletonInstance(this);
+		//lblLoggedUser.setText("Welcome " + functions.getLoggedUser());
 	}
 
 	@FXML
@@ -59,10 +68,14 @@ public class ChatScreenController {
 
 	public void refreshUsers() {
 
+		if (chatIsStarted == false) {
 		ObservableList<User> userList = FXCollections.observableArrayList(functions.refreshLoggedUsers());
 		System.out.println("Online users: " + userList);
 
 		listView.setItems(userList);
+		}
+		else 
+			System.out.println("Chat is on");
 
 	}
 
@@ -81,6 +94,16 @@ public class ChatScreenController {
 	
 	public void onSaveClicked(ActionEvent event) {
 		// TODO stuff here
+	}
+	
+	public void onStartClicked (ActionEvent event) {
+		chatIsStarted = true;
+		lblOnOff.setText("ON");
+	}
+	
+	public void onStopClicked (ActionEvent event) {
+		chatIsStarted = false;
+		lblOnOff.setText("OFF");
 	}
 
 }

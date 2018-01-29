@@ -160,5 +160,9 @@ public class ClientHandler {
 		});
 		readMessage.start();
 	}
+	
+	public User getLoggedUser() {
+		return loggedUser;
+	}
 
 }
