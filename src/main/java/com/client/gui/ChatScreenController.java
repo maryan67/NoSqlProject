@@ -1,10 +1,13 @@
 package com.client.gui;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import com.client.ClientHandler;
 import com.models.entities.User;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,9 +30,14 @@ public class ChatScreenController {
 	@FXML
 	private TextField txtInput;
 	
+	@FXML
+	private ListView <User> listView;
+	
 	private User user;
 	
 	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
+	
+	
 	
 	@FXML
 	public void onSendClick() {
@@ -42,9 +50,13 @@ public class ChatScreenController {
 		functions.backToLogin(event);
 	}
 	
-	public void listen () {
-		ClientHandler clientHandler = new ClientHandler (user);
-		clientHandler.connect();
+	public void refreshUsers () {
+		
+		ObservableList<User> userList= FXCollections.observableArrayList(functions.refreshLoggedUsers());
+		System.out.println("Online users: " + userList);
+		
+		listView.setItems(userList);
+		
 		
 	}
 	

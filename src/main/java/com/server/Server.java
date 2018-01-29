@@ -6,7 +6,9 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,7 +24,7 @@ import com.models.entities.UserDetalis;
 
 public class Server extends Thread {
 
-	static HashSet<ServerHandler> clients = new HashSet<ServerHandler>();
+	static List <ServerHandler> clients = new ArrayList<ServerHandler>();
 	public void run() {
 
 		SessionFactory factory = new Configuration().configure().addAnnotatedClass(User.class)
@@ -38,8 +40,8 @@ public class Server extends Thread {
 				ObjectInputStream oIn = new ObjectInputStream(connection.getInputStream());
 				System.out.println("ajung aci");
 				ServerHandler start = new ServerHandler(connection,factory,oIn,oOut);
-				clients.add(start);
 				start.start();
+				clients.add(start);
 			}
 		} catch (SocketException e) {
 			System.out.println("Server closed");
@@ -51,7 +53,7 @@ public class Server extends Thread {
 }
 class ServerHandler extends Thread {
 
-private User loggedUser;
+private User loggedUser = new User();
 private Socket socket;
 private SessionFactory factory;
 private ObjectInputStream oIn;
@@ -101,12 +103,13 @@ public void run() {
 			response = request.createResponse(factory.openSession());
 			
 			
-			if(response.getResponseType() == ResponseType.RESPONSE_LOGIN_OK) {
-				if(response.isSuccess())
-					this.loggedUser = request.getTo();
+			if(response.getResponseType().equals( ResponseType.RESPONSE_LOGIN_OK)) {
+				if(response.isSuccess()) {
+					loggedUser = request.getFrom();
+					
 				for(ServerHandler client : Server.clients) {
 					response.getOnlineUsers().add(client.getLoggedUser());
-				}
+				}}
 				
 			}
 			if(response.getResponseType() == ResponseType.RESPONSE_REFRESHONLINE) {

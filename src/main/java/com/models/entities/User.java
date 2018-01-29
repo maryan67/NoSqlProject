@@ -43,7 +43,10 @@ public class User  implements Serializable{
 			return false;		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return userName;
+	}
 	
 	public int getID() {
 		return id;

@@ -1,10 +1,12 @@
 package com.client.gui;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.client.ClientHandler;
 import com.models.entities.User;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,6 +20,11 @@ public class FxmlFunctions {
 	private FxmlFunctions() {}
 	
 	private static FxmlFunctions singletonInstance = null;
+	
+	private User user;
+	
+	public ClientHandler clientHandler;
+	
 	
 	//Screen switching
 	public void backToLogin (ActionEvent event) throws IOException {
@@ -78,7 +85,7 @@ public class FxmlFunctions {
 	}
 	
 	public Boolean checkLogin (User user) {
-		ClientHandler clientHandler = new ClientHandler (user);
+		clientHandler = new ClientHandler (user);
 		clientHandler.connect();
 		return clientHandler.login();
 	}
@@ -102,13 +109,20 @@ public class FxmlFunctions {
 	}
 	
 	public void registerUser (User user) {
-		ClientHandler clientHandler = new ClientHandler (user);
+		clientHandler = new ClientHandler (user);
 		clientHandler.connect();
 		if (clientHandler.register())
 			System.out.println("Register succesful");
 		else 
 			System.out.println("Register failed");
 	}
+	
+	//ChatScreen functions 
+	public List <User> refreshLoggedUsers () {
+		return FXCollections.observableArrayList(clientHandler.refreshOnlineUsers());
+	}
+	
+	//singleton
 	public static FxmlFunctions getSingletonInstance() {
 		if(singletonInstance == null) {
 			singletonInstance= new FxmlFunctions();
