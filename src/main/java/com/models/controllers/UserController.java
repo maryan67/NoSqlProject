@@ -28,8 +28,6 @@ public class UserController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.flush();
-			session.close();
 		}
 
 	}
@@ -46,7 +44,6 @@ public class UserController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.close();
 		}
 	}
 

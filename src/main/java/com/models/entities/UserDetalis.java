@@ -1,5 +1,7 @@
 package com.models.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +10,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users_details")
-public class UserDetalis {
+public class UserDetalis implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private int id;
 	@Column(name = "e_mail")

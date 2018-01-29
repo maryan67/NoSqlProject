@@ -27,8 +27,6 @@ public class UserDetalisController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.flush();
-			session.close();
 		}
 	}
 
@@ -44,8 +42,6 @@ public class UserDetalisController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.flush();
-			session.close();
 		}
 	}
 
@@ -68,7 +64,6 @@ public class UserDetalisController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.close();
 		}
 	}
 

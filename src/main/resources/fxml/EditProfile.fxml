@@ -20,7 +20,7 @@
       <TextField fx:id="txtBlckNr" layoutX="165.0" layoutY="236.0" prefWidth="60.0" promptText="Block Nr" />
       <TextField fx:id="txtZip" layoutX="76.0" layoutY="294.0" promptText="ZIP Code" />
       <TextArea fx:id="txtBio" layoutX="50.0" layoutY="354.0" prefHeight="80.0" prefWidth="200.0" promptText="Bio" />
-      <Button fx:id="btnConfirm" layoutX="50.0" layoutY="482.0" mnemonicParsing="false" prefWidth="75.0" text="Confirm" />
+      <Button fx:id="btnConfirm" layoutX="50.0" layoutY="482.0" mnemonicParsing="false" onAction="#onConfirmClicked" prefWidth="75.0" text="Confirm" />
       <Button fx:id="BtnCancel" layoutX="175.0" layoutY="482.0" mnemonicParsing="false" onAction="#onCancelClick" prefWidth="75.0" text="Cancel" />
    </children>
 </AnchorPane>

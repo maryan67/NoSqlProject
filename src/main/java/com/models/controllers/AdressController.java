@@ -27,8 +27,6 @@ public class AdressController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.flush();
-			session.close();
 		}
 
 	}
@@ -45,8 +43,6 @@ public class AdressController implements CRUDEntity {
 			}
 			e.printStackTrace();
 		} finally {
-			session.flush();
-			session.close();
 		}
 	}
 
