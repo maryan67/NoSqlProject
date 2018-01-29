@@ -141,6 +141,10 @@ public class FxmlFunctions {
 		clientHandler.sendMessage(message, recipient);
 	}
 	
+	public User getLoggedUser() {
+		return clientHandler.getLoggedUser();
+	}
+	
 	//singleton
 	public static FxmlFunctions getSingletonInstance(ChatScreenController chatScreenController) {
 		

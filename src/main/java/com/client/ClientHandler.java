@@ -52,7 +52,7 @@ public class ClientHandler {
 			response = (Response) dis.readObject();
 			if(response.isSuccess())
 			{
-				loggedUser = response.getLoggedUser();
+				//loggedUser = response.getLoggedUser();
 				return true;
 			}
 			
@@ -159,6 +159,10 @@ public class ClientHandler {
 			}
 		});
 		readMessage.start();
+	}
+	
+	public User getLoggedUser() {
+		return loggedUser;
 	}
 
 }

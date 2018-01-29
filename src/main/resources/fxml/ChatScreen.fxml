@@ -15,18 +15,22 @@
                <children>
                   <Button fx:id="btnSend" layoutX="367.0" layoutY="448.0" mnemonicParsing="false" onAction="#onSendClick" prefHeight="25.0" prefWidth="60.0" text="Send" />
                   <TextField fx:id="txtInput" layoutX="24.0" layoutY="448.0" prefHeight="25.0" prefWidth="336.0" promptText="Enter message" />
-                  <Label fx:id="lblTextArea" alignment="TOP_LEFT" layoutX="24.0" layoutY="14.0" prefHeight="412.0" prefWidth="403.0" wrapText="true" />
+                  <Label fx:id="lblTextArea" alignment="TOP_LEFT" layoutX="24.0" layoutY="40.0" prefHeight="386.0" prefWidth="403.0" wrapText="true" />
+                  <Label fx:id="lblLoggedUser" layoutX="24.0" layoutY="14.0" prefHeight="18.0" prefWidth="28.0" text="Label" visible="false" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="listView" layoutX="21.0" layoutY="41.0" prefHeight="361.0" prefWidth="200.0" />
+                  <ListView fx:id="listView" layoutX="21.0" layoutY="41.0" prefHeight="321.0" prefWidth="200.0" />
                   <Button fx:id="btnBack" layoutX="21.0" layoutY="448.0" mnemonicParsing="false" onAction="#onBackClick" prefWidth="60.0" text="Back" />
-                  <Button fx:id="btnChatWith" layoutX="161.0" layoutY="448.0" mnemonicParsing="false" onAction="#onChatClicked" prefWidth="60.0" text="Chat" />
+                  <Button fx:id="btnChatWith" layoutX="161.0" layoutY="448.0" mnemonicParsing="false" onAction="#onChatClicked" prefWidth="60.0" text="Select" />
                   <Button layoutX="91.0" layoutY="448.0" mnemonicParsing="false" prefWidth="60.0" text="View" />
                   <Button fx:id="btnRefresh" layoutX="46.0" layoutY="411.0" mnemonicParsing="false" onAction="#refreshUsers" prefWidth="70.0" text="Refresh" />
                   <Label fx:id="lblChatPartner" layoutX="21.0" layoutY="14.0" text="Label" visible="false" />
                   <Button fx:id="btnSaveConv" layoutX="123.0" layoutY="411.0" mnemonicParsing="false" onAction="#onSaveClicked" prefWidth="75.0" text="Save Conv" />
+                  <Button fx:id="btnStrtChat" layoutX="21.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStartClicked" prefWidth="60.0" text="Start " />
+                  <Button fx:id="btnStopChat" layoutX="161.0" layoutY="377.0" mnemonicParsing="false" onAction="#onStopClicked" prefWidth="60.0" text="Stop" />
+                  <Label fx:id="lblOnOff" layoutX="110.0" layoutY="381.0" text="OFF" />
                </children>
             </AnchorPane>
         </items>
