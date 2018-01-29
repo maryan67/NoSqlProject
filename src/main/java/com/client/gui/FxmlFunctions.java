@@ -169,6 +169,10 @@ public class FxmlFunctions {
 		return details;
 	}
 	
+	public void addAdressAndDetails (Adress adress, UserDetalis details, User from) {
+		clientHandler.createDetalisAndAdress(adress, details, from);
+	}
+	
 	//singleton
 	public static FxmlFunctions getSingletonInstance(ChatScreenController chatScreenController) {
 		

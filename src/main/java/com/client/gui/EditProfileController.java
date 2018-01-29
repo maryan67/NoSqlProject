@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class EditProfileController {
@@ -26,7 +27,7 @@ public class EditProfileController {
 	private TextField txtEmail;
 	
 	@FXML
-	private TextField txtStr;
+	private TextField txtStreet;
 	
 	@FXML
 	private TextField txtStrNr;
@@ -38,7 +39,7 @@ public class EditProfileController {
 	private TextField txtZip;
 	
 	@FXML
-	private TextField txtBio;
+	private TextArea txtBio;
 	
 	@FXML
 	private Label lblWarning; 
@@ -56,10 +57,10 @@ public class EditProfileController {
 	
 	public void onConfirmClicked(ActionEvent event) {
 		
-		adress = functions.createAdress(txtStr.getText(), Integer.parseInt(txtStrNr.getText()), Integer.parseInt(txtBlckNr.getText()), txtZip.getText());
+		adress = functions.createAdress(txtStreet.getText(), Integer.parseInt(txtStrNr.getText()), Integer.parseInt(txtBlckNr.getText()), txtZip.getText());
 		details = functions.createDetails(txtBio.getText(), txtEmail.getText());
 		
-		
+		functions.addAdressAndDetails(adress, details, functions.getLoggedUser());
 		
 		
 	}
