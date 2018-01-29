@@ -76,7 +76,7 @@ public class UserController implements CRUDEntity {
 		}		
 	}
 	
-	public boolean checkLogin(User user) {
+	public boolean checkLogin(User user, User loggedUser) {
 		User toCheck = null;
         Transaction transaction = null;
         try {
@@ -95,7 +95,11 @@ public class UserController implements CRUDEntity {
 		if(toCheck == null)
 			return false;
 		
-		return toCheck.getPassWord().equals(user.getPassWord());
+		boolean result =toCheck.getPassWord().equals(user.getPassWord());
+		if(result) {
+			loggedUser = toCheck;
+		}
+		return result;
 	}
 
 }

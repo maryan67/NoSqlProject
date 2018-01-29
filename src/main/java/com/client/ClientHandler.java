@@ -19,6 +19,7 @@ public class ClientHandler {
 	private ObjectInputStream dis;
 	private ObjectOutputStream dos;
 
+	private User loggedUser;
 	private User user;
 
 	public ClientHandler(User user) {
@@ -49,7 +50,12 @@ public class ClientHandler {
 		try {
 			dos.writeObject(request);
 			response = (Response) dis.readObject();
-			return response.isSuccess();
+			if(response.isSuccess())
+			{
+				loggedUser = response.getLoggedUser();
+				return true;
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -69,8 +69,10 @@ public class Request implements Serializable {
 			break;
 		case REQUEST_LOGIN: {
 			response = new Response(ResponseType.RESPONSE_LOGIN_OK);
-			if(((UserController) controller).checkLogin(from)) {
+			User loggedUser =null;
+			if(((UserController) controller).checkLogin(from,loggedUser)) {
 				response.setSuccess(true);
+				response.setLoggedUser(loggedUser);
 			}
 
 			break;

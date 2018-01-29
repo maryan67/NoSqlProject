@@ -16,6 +16,16 @@ public class Response implements Serializable{
 	private boolean success;
 	private String message;
 	private User from;
+	private User loggedUser;
+	
+	
+	
+	public User getLoggedUser() {
+		return loggedUser;
+	}
+	public void setLoggedUser(User loggedUser) {
+		this.loggedUser = loggedUser;
+	}
 	private List<User> onlineUsers = new ArrayList<User>();
 	public Response(ResponseType responseType) {
 		this.responseType = responseType;
