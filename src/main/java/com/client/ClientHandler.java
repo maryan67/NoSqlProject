@@ -130,7 +130,7 @@ public class ClientHandler {
 
 	}
 
-	public void startListeningToMessages(final ChatScreenController chatScreenController) {
+	public void startListeningToMessages(final ChatScreenController chatScreenController,Thread worker) {
 		Thread readMessage = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -161,7 +161,9 @@ public class ClientHandler {
 				}
 			}
 		});
+		
 		readMessage.start();
+		worker = readMessage;
 	}
 	
 	public User getLoggedUser() {

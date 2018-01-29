@@ -134,8 +134,8 @@ public class FxmlFunctions {
 		return FXCollections.observableArrayList(clientHandler.refreshOnlineUsers());
 	}
 	
-	public void listenToMessages (Label lbl) {
-		clientHandler.startListeningToMessages(chatScreenController);
+	public void listenToMessages (Thread worker) {
+		clientHandler.startListeningToMessages(chatScreenController,worker);
 	}
 	
 	public void sendMessage (String message, User recipient) {

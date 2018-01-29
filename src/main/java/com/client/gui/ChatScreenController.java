@@ -47,6 +47,7 @@ public class ChatScreenController {
 
 	private FxmlFunctions functions;
 
+	private Thread worker;
 	public ChatScreenController() {
 		functions = FxmlFunctions.getSingletonInstance(this);
 		System.out.println(functions.getLoggedUser());
@@ -91,7 +92,7 @@ public class ChatScreenController {
 		lblChatPartner.setVisible(true);
 		lblChatPartner.setText("Chatting with " + listView.getSelectionModel().getSelectedItem());
 		selectedUser = listView.getSelectionModel().getSelectedItem();
-		functions.listenToMessages(lblTextArea);
+		
 	}
 
 	public void updateLabel(String text) {
@@ -103,11 +104,13 @@ public class ChatScreenController {
 	}
 	
 	public void onStartClicked (ActionEvent event) {
+		functions.listenToMessages(worker);
 		chatIsStarted = true;
 		lblOnOff.setText("ON");
 	}
 	
 	public void onStopClicked (ActionEvent event) {
+		worker.interrupt();
 		chatIsStarted = false;
 		lblOnOff.setText("OFF");
 	}
