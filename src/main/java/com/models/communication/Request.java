@@ -38,7 +38,7 @@ public class Request implements Serializable {
 			break;
 		case REQUEST_LOGIN: {
 			response = new Response(ResponseType.RESPONSE_LOGIN_OK);
-			User loggedUser = null;
+			User loggedUser = new User();
 			if (((UserController) controller).checkLogin(from, loggedUser)) {
 				response.setSuccess(true);
 				response.setLoggedUser(loggedUser);
@@ -66,6 +66,12 @@ public class Request implements Serializable {
 			controller.create(userDetails);
 			controller = controllerFactory.getController("Adress", session);
 			controller.create(adress);
+			from.setDetailsId(userDetails.getId());
+			userDetails.setAdressId(Integer.toString(adress.getId()));
+			controller = controllerFactory.getController("UserDetails", session);
+			controller.update(userDetails);
+			controller = controllerFactory.getController("User", session);
+			controller.update(from);
 			response = new Response(ResponseType.RESPONSE_ADDDETAILS);
 		}
 		default:

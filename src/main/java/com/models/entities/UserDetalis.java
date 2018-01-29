@@ -24,6 +24,7 @@ public class UserDetalis {
 
 	public UserDetalis(String eMail, String adressId, String bio) {
 		super();
+
 		this.eMail = eMail;
 		this.adressId = adressId;
 		this.bio = bio;
