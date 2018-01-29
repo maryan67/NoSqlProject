@@ -22,9 +22,8 @@ public class UserDetalis {
 	
 	public UserDetalis() {}
 
-	public UserDetalis(int id, String eMail, String adressId, String bio) {
+	public UserDetalis(String eMail, String adressId, String bio) {
 		super();
-		this.id = id;
 		this.eMail = eMail;
 		this.adressId = adressId;
 		this.bio = bio;
