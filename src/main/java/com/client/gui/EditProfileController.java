@@ -40,6 +40,9 @@ public class EditProfileController {
 	@FXML
 	private TextField txtBio;
 	
+	@FXML
+	private Label lblWarning; 
+	
 	private UserDetalis details;
 	
 	private Adress adress;
@@ -52,12 +55,12 @@ public class EditProfileController {
 	
 	
 	public void onConfirmClicked(ActionEvent event) {
-		details.setBio(txtBio.getText());
-		details.seteMail(txtEmail.getText());
 		
-		adress.setStreet(txtStr.getText());
-		adress.setStreetNumber(Integer.parseInt(txtStrNr.getText()));
-		adress.setBlockNumber(Integer.parseInt(txtBlckNr.getText()));
-		adress.setZipCode(txtZip.getText());
+		adress = functions.createAdress(txtStr.getText(), Integer.parseInt(txtStrNr.getText()), Integer.parseInt(txtBlckNr.getText()), txtZip.getText());
+		details = functions.createDetails(txtBio.getText(), txtEmail.getText());
+		
+		
+		
+		
 	}
 }

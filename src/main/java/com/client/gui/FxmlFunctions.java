@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import com.client.ClientHandler;
+import com.models.entities.Adress;
 import com.models.entities.User;
+import com.models.entities.UserDetalis;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -143,6 +145,28 @@ public class FxmlFunctions {
 	
 	public User getLoggedUser() {
 		return clientHandler.getLoggedUser();
+	}
+	
+	//EditProfile functions
+	
+	public Adress createAdress (String street, int strNr, int blckNr, String zip) {
+		Adress adress = new Adress();
+		adress.setStreet(street);
+		adress.setStreetNumber(strNr);
+		adress.setBlockNumber(blckNr);
+		adress.setZipCode(zip);
+		
+		return adress;
+		
+	}
+	
+	public UserDetalis createDetails (String bio, String email) {
+		UserDetalis details = new UserDetalis();
+		
+		details.setBio(bio);
+		details.seteMail(email);
+		
+		return details;
 	}
 	
 	//singleton
