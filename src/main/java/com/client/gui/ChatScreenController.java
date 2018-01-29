@@ -2,6 +2,7 @@ package com.client.gui;
 
 import java.io.IOException;
 
+import com.client.ListenToMessages;
 import com.models.entities.User;
 
 import javafx.collections.FXCollections;
@@ -46,8 +47,9 @@ public class ChatScreenController {
 	private User selectedUser;
 
 	private FxmlFunctions functions;
+	
 
-	private Thread worker;
+	private ListenToMessages worker;
 	public ChatScreenController() {
 		functions = FxmlFunctions.getSingletonInstance(this);
 		System.out.println(functions.getLoggedUser());
@@ -100,17 +102,21 @@ public class ChatScreenController {
 	}
 	
 	public void onSaveClicked(ActionEvent event) {
-		// TODO stuff here
+
+	
+		functions.saveMessage();
 	}
 	
 	public void onStartClicked (ActionEvent event) {
-		functions.listenToMessages(worker);
+		worker = new ListenToMessages(functions.getDis(), this);
+		worker.start();
 		chatIsStarted = true;
 		lblOnOff.setText("ON");
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void onStopClicked (ActionEvent event) {
-		worker.interrupt();
+		worker.stop();
 		chatIsStarted = false;
 		lblOnOff.setText("OFF");
 	}

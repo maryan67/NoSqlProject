@@ -6,6 +6,7 @@ import org.hibernate.Session;
 
 import com.models.CRUDEntity;
 import com.models.controllers.ControllerFactory;
+import com.models.controllers.MongoController;
 import com.models.controllers.UserController;
 import com.models.entities.Adress;
 import com.models.entities.User;
@@ -60,6 +61,7 @@ public class Request implements Serializable {
 
 		case REQUEST_REFRESHONLINE: {
 			response = new Response(ResponseType.RESPONSE_REFRESHONLINE);
+			break;
 
 		}
 		case REQUEST_ADDDETAILS: {
@@ -74,6 +76,14 @@ public class Request implements Serializable {
 			controller = controllerFactory.getController("User", session);
 			controller.update(from);
 			response = new Response(ResponseType.RESPONSE_ADDDETAILS);
+			break;
+		}
+		
+		case REQUEST_SAVEMESSAGE:{
+			MongoController mongo = new MongoController();
+			mongo.create(from, message);
+			response = new Response(ResponseType.RESPONSE_SAVEMESSAGE);
+			break;
 		}
 		default:
 			break;

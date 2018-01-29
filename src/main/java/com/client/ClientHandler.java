@@ -129,42 +129,28 @@ public class ClientHandler {
 		sendMessage.start();
 
 	}
-
-	public void startListeningToMessages(final ChatScreenController chatScreenController,Thread worker) {
-		Thread readMessage = new Thread(new Runnable() {
-			@Override
-			public void run() {
-
-				Response response = null;
-				while (true) {
-					try {
-						response = (Response) dis.readObject();
-
-						final User from = response.getFrom();
-						final String message = response.getMessage();
-						Platform.runLater(new Runnable() {
-
-							@Override
-							public void run() {
-								chatScreenController.updateLabel(from + ":" + message);
-
-							}
-
-						});
-
-					} catch (IOException e) {
-
-						e.printStackTrace();
-					} catch (ClassNotFoundException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
+	
+	public void saveMessage() {
 		
-		readMessage.start();
-		worker = readMessage;
+		Response response = null;
+		Request request = new Request(RequestType.REQUEST_SAVEMESSAGE);
+		try {
+			request.setFrom(loggedUser);
+			request.setMessage("TO BE DONE -->>>");
+			dos.writeObject(request);
+			response = (Response) dis.readObject();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	
 	}
+
+
 	
 	public User getLoggedUser() {
 		return loggedUser;
@@ -187,6 +173,11 @@ public class ClientHandler {
 			e.printStackTrace();
 		}
 	}
+
+	public ObjectInputStream getDis() {
+		return dis;
+	}
+	
 		
 	
 

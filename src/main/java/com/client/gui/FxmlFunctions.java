@@ -1,6 +1,7 @@
 package com.client.gui;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.List;
 
 import com.client.ClientHandler;
@@ -14,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class FxmlFunctions {
@@ -134,8 +134,9 @@ public class FxmlFunctions {
 		return FXCollections.observableArrayList(clientHandler.refreshOnlineUsers());
 	}
 	
-	public void listenToMessages (Thread worker) {
-		clientHandler.startListeningToMessages(chatScreenController,worker);
+
+	public void saveMessage() {
+		clientHandler.saveMessage();
 	}
 	
 	public void sendMessage (String message, User recipient) {
@@ -159,6 +160,8 @@ public class FxmlFunctions {
 		return adress;
 		
 	}
+	
+
 	
 	public UserDetalis createDetails (String bio, String email) {
 		UserDetalis details = new UserDetalis();
@@ -184,5 +187,9 @@ public class FxmlFunctions {
 		}
 		
 		return singletonInstance;
+	}
+	
+	public ObjectInputStream getDis() {
+		return clientHandler.getDis();
 	}
 }
