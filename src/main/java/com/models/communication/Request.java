@@ -41,6 +41,7 @@ public class Request implements Serializable {
 			User loggedUser = new User();
 			if (((UserController) controller).checkLogin(from, loggedUser)) {
 				response.setSuccess(true);
+				System.out.println(loggedUser);
 				response.setLoggedUser(loggedUser);
 			}
 			break;

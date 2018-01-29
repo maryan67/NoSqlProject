@@ -49,8 +49,14 @@ public class ChatScreenController {
 
 	public ChatScreenController() {
 		functions = FxmlFunctions.getSingletonInstance(this);
-		//lblLoggedUser.setText("Welcome " + functions.getLoggedUser());
+		System.out.println(functions.getLoggedUser());
+		
 	}
+	@FXML
+    public void initialize() {
+		lblLoggedUser.setVisible(true);
+		lblLoggedUser.setText("Welcome " + functions.getLoggedUser());
+    }
 
 	@FXML
 	public void onSendClick() {

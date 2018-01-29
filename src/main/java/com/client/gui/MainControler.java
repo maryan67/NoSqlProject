@@ -58,7 +58,6 @@ public class MainControler {
 				btnChat.setDisable(false);
 				btnEdit.setDisable(false);
 				btnLogin.setDisable(true);				
-				loggedUser = user;
 				
 			}
 		}

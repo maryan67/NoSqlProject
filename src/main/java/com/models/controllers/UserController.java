@@ -97,7 +97,10 @@ public class UserController implements CRUDEntity {
 		
 		boolean result =toCheck.getPassWord().equals(user.getPassWord());
 		if(result) {
-			loggedUser = toCheck;
+			loggedUser.setDetailsId(toCheck.getDetailsId());
+			loggedUser.setID(toCheck.getID());
+			loggedUser.setPassWord(toCheck.getPassWord());
+			loggedUser.setUserName(toCheck.getUserName());
 		}
 		return result;
 	}

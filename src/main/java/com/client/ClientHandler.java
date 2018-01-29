@@ -21,7 +21,7 @@ public class ClientHandler {
 	private ObjectInputStream dis;
 	private ObjectOutputStream dos;
 
-	private User loggedUser;
+	private User loggedUser = new User();
 	private User user;
 
 	public ClientHandler(User user) {
@@ -54,7 +54,8 @@ public class ClientHandler {
 			response = (Response) dis.readObject();
 			if(response.isSuccess())
 			{
-				//loggedUser = response.getLoggedUser();
+				loggedUser = response.getLoggedUser();
+				System.out.println("Logged user is "+response.getLoggedUser());
 				return true;
 			}
 			
