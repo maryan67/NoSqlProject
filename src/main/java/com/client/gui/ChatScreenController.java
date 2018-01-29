@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class ChatScreenController {
 
@@ -33,7 +34,12 @@ public class ChatScreenController {
 	@FXML
 	private ListView <User> listView;
 	
+	@FXML
+	private Label lblChatPartner;
+	
 	private User user;
+	
+	private User selectedUser;
 	
 	private FxmlFunctions functions = FxmlFunctions.getSingletonInstance();
 	
@@ -41,8 +47,11 @@ public class ChatScreenController {
 	
 	@FXML
 	public void onSendClick() {
+		System.out.println(selectedUser);
+		functions.sendMessage(txtInput.getText(), selectedUser);
 		lblTextArea.setText(lblTextArea.getText() + txtInput.getText() + "\n");
 		txtInput.clear();
+		functions.listenToMessages(lblTextArea);
 	}
 	
 	@FXML
@@ -58,9 +67,16 @@ public class ChatScreenController {
 		listView.setItems(userList);
 		
 		
+		
 	}
 	
-	
+	@FXML
+	public void onChatClicked(ActionEvent event) {
+		System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
+		lblChatPartner.setVisible(true);
+		lblChatPartner.setText("Chatting with " + listView.getSelectionModel().getSelectedItem());
+		selectedUser= listView.getSelectionModel().getSelectedItem();
+	}
 	
 		
 }

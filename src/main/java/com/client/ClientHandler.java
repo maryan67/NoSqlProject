@@ -115,6 +115,7 @@ public class ClientHandler {
 	 
 	                     
 	                    try {
+	                    	System.out.println(recipient);
 	                    	Request request = new Request(RequestType.REQUEST_SENDMESSAGE);
 	                		request.setFrom(user);
 	                		request.setTo(recipient);
@@ -143,7 +144,8 @@ public class ClientHandler {
 	                    try {
 	                    	response = (Response) dis.readObject();
 	                    	lblTextArea.setText(lblTextArea.getText()+response.getFrom().getUserName()+":"+response.getMessage()+"\n");
-	                        
+	                        System.out.println(response.getMessage());
+	                    	
 	                    } catch (IOException e) {
 	 
 	                        e.printStackTrace();
