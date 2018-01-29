@@ -78,5 +78,9 @@ public class ChatScreenController {
 	public void updateLabel(String text) {
 		lblTextArea.setText(lblTextArea.getText() + text + "\n");
 	}
+	
+	public void onSaveClicked(ActionEvent event) {
+		// TODO stuff here
+	}
 
 }
