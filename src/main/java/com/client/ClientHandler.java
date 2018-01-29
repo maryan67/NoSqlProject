@@ -10,7 +10,9 @@ import com.client.gui.ChatScreenController;
 import com.models.communication.Request;
 import com.models.communication.RequestType;
 import com.models.communication.Response;
+import com.models.entities.Adress;
 import com.models.entities.User;
+import com.models.entities.UserDetalis;
 
 import javafx.application.Platform;
 
@@ -164,5 +166,25 @@ public class ClientHandler {
 	public User getLoggedUser() {
 		return loggedUser;
 	}
+	public void createDetalisAndAdress(Adress adress, UserDetalis userDetails,User from) {
+		Response response = null;
+		Request request = new Request(RequestType.REQUEST_ADDDETAILS);
+		try {
+			request.setAdress(adress);
+			request.setFrom(from);
+			request.setUserDetails(userDetails);
+			dos.writeObject(request);
+			response = (Response) dis.readObject();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+		
+	
 
 }
